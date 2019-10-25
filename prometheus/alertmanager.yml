@@ -1,0 +1,12 @@
+global:
+    http_config:
+        tls_config:
+            insecure_skip_verify: true
+route:
+    receiver: mattermost
+    group_by: ['alertname']
+
+receivers:
+    - name: mattermost
+      slack_configs:
+      - api_url: https://mattermost.ing.net/hooks/ee9hwetyxbyy9nrzyyy37fwbsw

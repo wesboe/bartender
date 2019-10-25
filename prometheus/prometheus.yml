@@ -1,0 +1,25 @@
+# my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - alertmanager:9093
+
+rule_files:
+  - "alertrules.yml"
+  
+scrape_configs:
+  - job_name: 'Bartender'
+    scheme: http
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ['docker.for.mac.localhost:8080']
+        labels:
+          application: bartender
+          environment: local
+

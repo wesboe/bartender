@@ -1,5 +1,6 @@
 package nl.ing.jfall.bar.bartender.configuration;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Metrics;
 import io.micrometer.core.instrument.Tags;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +17,7 @@ public class MonitoringConfig {
     private static final int ONE = 1;
     private final BuildProperties buildProperties;
 
-    public MonitoringConfig(final BuildProperties buildProperties) {
+    public MonitoringConfig(final BuildProperties buildProperties, MeterRegistry registry) {
         this.buildProperties = buildProperties;
     }
 

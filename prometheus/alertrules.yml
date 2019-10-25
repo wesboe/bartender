@@ -1,0 +1,11 @@
+groups:
+- name: workshop.rules
+  rules:
+  - alert: instance_down
+    expr: up == 0
+    for: 1m
+    labels:
+      severity: WARNING
+    annotations:
+      summary: "Instance down {{ $labels.environment }}"
+      description: "{{ $labels.instance }} of {{ $labels.job }} is down for more than 5 minutes, application is still running"
