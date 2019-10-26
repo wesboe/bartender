@@ -18,7 +18,7 @@ scrape_configs:
     scheme: http
     metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ['docker.for.mac.localhost:8080']
+      - targets: ['docker.for.mac.localhost:8090']
         labels:
           application: bartender
           environment: local

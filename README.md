@@ -11,6 +11,8 @@ Applications can be reached on
 Log in credentials for Grafana are admin/password   
 
 ## Getting Started
+Call the Bartender endpoint every 100 milliseconds
+```bash
 while(true) do curl -w "\n" http://localhost:8080/menu; sleep 0.1s;  done
-
+```
 

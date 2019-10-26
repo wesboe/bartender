@@ -17,9 +17,10 @@ public class BartenderController {
     }
 
     @GetMapping("/menu")
-    public List<MenuItem> getMenu() throws InterruptedException {
+    public List<MenuItem> getMenu() {
         if ((int)(Math.random()*100) % 10 == 0) throw new RuntimeException("oeps");
-        if ((int)(Math.random()*100) % 5 == 0) Thread.sleep(10);
+        Delayer.for10MillisWithProbability(5);
+        Delayer.for30MillisWithProbability(1);
         return menuRepository.findAll();
     }
 
