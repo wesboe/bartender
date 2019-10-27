@@ -5,12 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Delayer {
 
-    public static void for10MillisWithProbability(int probability) {
-        delayInMilliseconds(probability, 10);
+    public static void for20MillisWithProbability(int probability) {
+        delayInMilliseconds(probability, 20);
     }
 
-    public static void for30MillisWithProbability(int probability) {
-        delayInMilliseconds(probability, 30);
+    public static void for40MillisWithProbability(int probability) {
+        delayInMilliseconds(probability, 40);
     }
 
     private static void delayInMilliseconds(int probability, long millis) {
