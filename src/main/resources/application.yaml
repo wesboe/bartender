@@ -1,26 +1,2 @@
 server:
   port: 8080
-  ssl:
-    key-alias: localhost
-    key-password: changeit
-    key-store: keystore/keystore.jks
-    key-store-password: changeit
-    trust-store: keystore/truststore.jks
-    trust-store-password: changeit
-    client-auth: need
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "info, health, prometheus"
-  metrics:
-    distribution:
-      percentiles:
-        http.server.requests: 0.95D, 0.99D
-      sla:
-        http.server.requests: 1ms,5ms
-  server:
-    port: 8090
-    ssl:
-      enabled: false
-
