@@ -17,7 +17,7 @@ public class MonitoringConfig {
     private static final int ONE = 1;
     private final BuildProperties buildProperties;
 
-    public MonitoringConfig(final BuildProperties buildProperties, MeterRegistry registry) {
+    public MonitoringConfig(final BuildProperties buildProperties) {
         this.buildProperties = buildProperties;
     }
 
@@ -25,6 +25,7 @@ public class MonitoringConfig {
     public void runner(ContextRefreshedEvent event) {
         log.info(String.format("%s started with version %s and build time %s.",
                 buildProperties.getName(), buildProperties.getVersion(), buildProperties.getTime()));
-        Metrics.gauge("build_info", Tags.of("version", buildProperties.getVersion()), 1);
+        Metrics.gauge(BUILD_INFO,
+                Tags.of("version", buildProperties.getVersion()), ONE);
     }
 }

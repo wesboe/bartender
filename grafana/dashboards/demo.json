@@ -31,7 +31,7 @@
   "gnetId": 4701,
   "graphTooltip": 1,
   "id": 1,
-  "iteration": 1572108924125,
+  "iteration": 1572115252961,
   "links": [],
   "panels": [
     {
@@ -84,25 +84,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "irate(http_server_requests_seconds_count[1m])",
+          "expr": "rate(http_server_requests_seconds_count[1m])",
           "format": "time_series",
-          "hide": true,
           "intervalFactor": 1,
-          "legendFormat": "{{uri}} - {{outcome}}",
+          "legendFormat": "{{uri}} - {{outcome}} - {{client_name}}",
           "refId": "A"
-        },
-        {
-          "expr": "sum(rate(http_server_requests_seconds_count[1m])) by (uri)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{uri}} - {{outcome}}",
-          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "HTTP tps",
+      "title": "Rate per minute",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -186,7 +178,7 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Panel Title",
+      "title": "Latency",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -202,7 +194,7 @@
       },
       "yaxes": [
         {
-          "format": "ms",
+          "format": "s",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -378,7 +370,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "up{application=\"$application\"}",
+          "expr": "up{application=\"$application\", instance=\"$instance\"}",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -2609,7 +2601,7 @@
       "points": false,
       "renderer": "flot",
       "repeat": null,
-      "repeatIteration": 1572108924125,
+      "repeatIteration": 1572115252961,
       "repeatPanelId": 3,
       "scopedVars": {
         "jvm_memory_pool_heap": {
@@ -2749,7 +2741,7 @@
       "points": false,
       "renderer": "flot",
       "repeat": null,
-      "repeatIteration": 1572108924125,
+      "repeatIteration": 1572115252961,
       "repeatPanelId": 3,
       "scopedVars": {
         "jvm_memory_pool_heap": {
@@ -3041,7 +3033,7 @@
       "points": false,
       "renderer": "flot",
       "repeat": null,
-      "repeatIteration": 1572108924125,
+      "repeatIteration": 1572115252961,
       "repeatPanelId": 78,
       "scopedVars": {
         "jvm_memory_pool_nonheap": {
@@ -3181,7 +3173,7 @@
       "points": false,
       "renderer": "flot",
       "repeat": null,
-      "repeatIteration": 1572108924125,
+      "repeatIteration": 1572115252961,
       "repeatPanelId": 78,
       "scopedVars": {
         "jvm_memory_pool_nonheap": {
@@ -4266,8 +4258,8 @@
         "allFormat": "glob",
         "allValue": null,
         "current": {
-          "text": "docker.for.mac.localhost:8080",
-          "value": "docker.for.mac.localhost:8080"
+          "text": "docker.for.mac.localhost:8090",
+          "value": "docker.for.mac.localhost:8090"
         },
         "datasource": "p8s",
         "hide": 0,
@@ -4291,6 +4283,7 @@
         "allFormat": "glob",
         "allValue": null,
         "current": {
+          "selected": true,
           "text": "All",
           "value": "$__all"
         },
@@ -4340,7 +4333,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -4372,5 +4365,5 @@
   "timezone": "browser",
   "title": "JVM (Micrometer)",
   "uid": "UoNdPVAZz",
-  "version": 4
+  "version": 5
 }

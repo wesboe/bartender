@@ -2,15 +2,15 @@ version: "3"
 
 services:
 
-  prom:
+  prometheus:
     image: prom/prometheus:v2.4.3
     volumes:
      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
      - ./prometheus/alertrules.yml:/etc/prometheus/alertrules.yml
-    command: 
-     - "--config.file=/etc/prometheus/prometheus.yml"
-     - "--storage.tsdb.path=/prometheus"
-     - "--web.enable-lifecycle"
+#    command:
+#     - "--config.file=/etc/prometheus/prometheus.yml"
+#     - "--storage.tsdb.path=/prometheus"
+#     - "--web.enable-lifecycle"
     ports:
      - 9090:9090
      
@@ -18,10 +18,12 @@ services:
     image: grafana/grafana:5.2.4
     ports:
      - 3000:3000
+    volumes:
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
     env_file:
       - ./grafana/config.monitoring
     depends_on:
-      - prom
+      - prometheus
       
   alertmanager:
     image: prom/alertmanager:v0.19.0
