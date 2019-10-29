@@ -34,7 +34,7 @@ public class CertificateWebMvcTagsProvider extends DefaultWebMvcTagsProvider {
 
 	private String retrieveCommonName(X509Certificate[] cert) {
 		try {
-			if (cert.length == 0) {
+			if (cert == null) {
 				return "";
 			}
 			String dn = cert[0].getSubjectX500Principal().getName();
