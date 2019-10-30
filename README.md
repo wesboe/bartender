@@ -11,8 +11,13 @@ Applications can be reached on
 Log in credentials for Grafana are admin/password   
 
 ## Getting Started
-Call the Bartender endpoint every 100 milliseconds
-```bash
-while(true) do curl -w "\n" http://localhost:8080/menu; sleep 0.1s;  done
-```
+Start Bartender application in your IDE or use `mvn spring-boot:start`  
+In Grafana import dashboard `https://grafana.com/grafana/dashboards/4701`   
+Start load script `run_load_seconds.sh` to generate traffic
 
+## Getting Started
+https://grafana.com/  
+https://prometheus.io/  
+http://micrometer.io/  
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-metrics  
+https://spring.io/blog/2018/03/16/micrometer-spring-boot-2-s-new-application-metrics-collector  
